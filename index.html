@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Converter</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>🔄 Universal Converter</h1>
+            <p class="subtitle">Конвертер всего на свете</p>
+        </header>
+        
+        <div class="category-selector">
+            <label for="category">Выберите категорию:</label>
+            <select id="category">
+                <option value="currency">💱 Валюта</option>
+                <option value="length">📏 Длина</option>
+                <option value="weight">⚖️ Вес</option>
+                <option value="temperature">🌡️ Температура</option>
+                <option value="volume">🧪 Объём</option>
+                <option value="area">📐 Площадь</option>
+                <option value="speed">🚗 Скорость</option>
+                <option value="time">⏰ Время</option>
+                <option value="data">💾 Данные</option>
+            </select>
+        </div>
+
+        <div class="converter-container">
+            <div class="input-group">
+                <label for="from-unit">Из:</label>
+                <select id="from-unit">
+                    <option value="">Загрузка...</option>
+                </select>
+                <input type="number" id="input-value" placeholder="Введите значение" value="1" step="any">
+            </div>
+
+            <div class="swap-button">
+                <button id="swap" aria-label="Поменять местами">⇅</button>
+            </div>
+
+            <div class="output-group">
+                <label for="to-unit">В:</label>
+                <select id="to-unit">
+                    <option value="">Загрузка...</option>
+                </select>
+                <div id="output-value" class="output">0</div>
+            </div>
+        </div>
+
+        <div class="info-block" id="info-block" style="display: none;">
+            <p id="info-text"></p>
+        </div>
+
+        <div class="history">
+            <h3>📋 История конвертаций</h3>
+            <button id="clear-history" class="clear-btn">Очистить</button>
+            <ul id="history-list">
+                <li class="empty-history">История пуста</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Скрипты загружаются в правильном порядке -->
+    <script src="scripts/converters.js"></script>
+    <script src="scripts/app.js"></script>
+    
+    <!-- Проверка загрузки -->
+    <script>
+        console.log('HTML загружен');
+        console.log('conversionData доступен:', typeof conversionData !== 'undefined');
+        console.log('app объект доступен:', typeof app !== 'undefined');
+    </script>
+</body>
+</html>
